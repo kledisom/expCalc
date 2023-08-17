@@ -1,4 +1,4 @@
-function navegarHome(path) {
+function navegar1(path) {
     window.location.href = `https://kledisom.github.io/expCalc/views/${path}`;
 }
 
