@@ -1,3 +1,8 @@
+function navegar(path) {
+    window.location.href = `../views/${path}`
+}
+
+
 const btnSave = document.querySelector('#btn-save');
 
 document.querySelector('#pedido').value = localStorage.getItem('numeroPedido');
@@ -135,6 +140,3 @@ function modelAndlen() {
 
 modelAndlen();
 
-function navegar(path) {
-    window.location.href = `../views/${path}`
-}
