@@ -1,6 +1,6 @@
 var numAtualPedido = localStorage.getItem('numeroPedido');
 
-const url = "http://localhost:3390";
+const url = "http://api-expedicao.vercel.app";
 fetch(`${url}/read/rte/true`)
     .then((x) => x.json())
     .then((res) => {
