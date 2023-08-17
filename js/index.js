@@ -1,5 +1,5 @@
 function navegar(path) {
-    window.location.href = `../views/${path}`
+    window.location.href = `https://kledisom.github.io/expCalc/views/${path}`;
 }
 
 
