@@ -1,0 +1,85 @@
+.aproved {
+    background-color: green;
+}
+
+.disapproved {
+    background-color: red;
+}
+
+#display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+}
+
+.area-btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #000;
+    padding: 5px;
+    background-color: #5555;
+}
+
+.btn-nav {
+    height: 30px;
+    width: 50px;
+}
+
+.label-name {
+    margin-top: 5px;
+}
+
+#pedido,
+#cliente {
+    height: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.model,
+.codigo,
+.tara {
+    padding: 10px;
+
+}
+
+.peso_met {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    border: 1px solid #000;
+    background-color: #5555;
+    padding: 10px;
+}
+
+.insert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+#peso,
+#met {
+    height: 40px;
+    width: 100px;
+    font-size: 1.5rem;
+}
+
+#btn-save {
+    margin-top: 10px;
+    height: 30px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 90%;
+}
