@@ -136,5 +136,5 @@ function modelAndlen() {
 modelAndlen();
 
 function navegar(path) {
-    location.href = `../views/${path}`
+    location = `../views/${path}`
 }
