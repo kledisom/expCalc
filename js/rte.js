@@ -7,7 +7,7 @@ fetch(`${url}/read/rte/true`)
         list(res);
         document.querySelector('.lds-ring').style.display = "none";
     })
-
+//s
 function list(obj) {
     const tbody = document.querySelector("tbody");
     var tara = 0;
