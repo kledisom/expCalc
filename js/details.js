@@ -1,6 +1,6 @@
 var numAtualPedido = localStorage.getItem('numeroPedido');
 
-const url = "http://api-expedicao.vercel.app";
+const url = "https://api-expedicao.vercel.app";
 fetch(`${url}/read/pedido/${numAtualPedido}`)
     .then((x) => x.json())
     .then((res) => {
