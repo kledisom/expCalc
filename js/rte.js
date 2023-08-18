@@ -1,10 +1,11 @@
 var numAtualPedido = localStorage.getItem('numeroPedido');
 
-const url = "http://api-expedicao.vercel.app";
+const url = "https://api-expedicao.vercel.app";
 fetch(`${url}/read/rte/true`)
     .then((x) => x.json())
     .then((res) => {
         list(res);
+        document.querySelector('.lds-ring').style.display = "none";
     })
 
 function list(obj) {
