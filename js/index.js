@@ -98,7 +98,9 @@ function sendObj(array, status) {
     })
         .then((x) => x.json())
         .then((res) => {
-            alert("salvo")
+            showDialog();
+
+            setTimeout(() => { closeDialog() }, 3000)
         })
 };
 
@@ -140,3 +142,12 @@ function modelAndlen() {
 
 modelAndlen();
 
+const dialog = document.getElementById("myDialog");
+
+function showDialog() {
+    dialog.show();
+}
+
+function closeDialog() {
+    dialog.close();
+} 
