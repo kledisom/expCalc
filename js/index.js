@@ -1,8 +1,3 @@
-function navegar1(path) {
-    window.location.href = `https://kledisom.github.io/expCalc/views/${path}`;
-}
-//tes
-
 const btnSave = document.querySelector('#btn-save');
 
 document.querySelector('#pedido').value = localStorage.getItem('numeroPedido');
@@ -12,12 +7,30 @@ document.querySelector('#len').value = localStorage.getItem('len');
 document.querySelector('#codigo').value = localStorage.getItem('codigo');
 document.querySelector('#tara').value = localStorage.getItem('tara');
 
+document.querySelector('#codigo').addEventListener("blur", () => {
+    let flag = document.querySelector('#codigo').value.length;
+    if (flag === 8) {
+        let numeroCod = document.querySelector('#codigo').value;
+
+        const url = "http://localhost:3390";
+        fetch(`${url}/read/rte/${numeroCod}`)
+            .then((x) => x.json())
+            .then((rte) => {
+                document.querySelector('#model').value = rte[0].modelo;
+                document.querySelector('#len').value = rte[0].largura;
+                localStorage.setItem('model', rte[0].modelo);
+                localStorage.setItem('len', rte[0].largura);
+                console.log(rte[0].modelo)
+            })
+    }
+})
+
 btnSave.addEventListener('click', (e) => {
     e.preventDefault();
 
     let numeroCod = document.querySelector('#codigo').value;
 
-    const url = "https://api-expedicao.vercel.app";
+    const url = "http://localhost:3390";
     fetch(`${url}/read/rte/${numeroCod}`)
         .then((x) => x.json())
         .then((rte) => {
@@ -40,8 +53,8 @@ function calculating(rte) {
 
     localStorage.setItem('numeroPedido', numeroPedido);
     localStorage.setItem('nomeCliente', nomeCliente);
-    localStorage.setItem('model', model);
-    localStorage.setItem('len', len);
+    /*     localStorage.setItem('model', model);
+        localStorage.setItem('len', len); */
     localStorage.setItem('codigo', codigo);
     localStorage.setItem('tara', tara);
 
@@ -76,7 +89,7 @@ function calculating(rte) {
 };
 
 function sendObj(array, status) {
-    const url = "https://api-expedicao.vercel.app";
+    const url = "http://localhost:3390";
 
     const obj = {
         "nu_pedido": array[0],
@@ -98,6 +111,7 @@ function sendObj(array, status) {
     })
         .then((x) => x.json())
         .then((res) => {
+            //alert("salvo");
             showDialog();
 
             setTimeout(() => { closeDialog() }, 3000)
@@ -111,7 +125,7 @@ function isNotEmpty(value) {
 function modelAndlen() {
     var numAtualPedido = localStorage.getItem('numeroPedido');
 
-    const url = "https://api-expedicao.vercel.app";
+    const url = "http://localhost:3390";
     fetch(`${url}/read/rte/true`)
         .then((x) => x.json())
         .then((res) => {
@@ -140,7 +154,11 @@ function modelAndlen() {
     };
 }
 
-modelAndlen();
+//modelAndlen();
+
+function navegar(path) {
+    location.href = `../views/${path}`
+}
 
 const dialog = document.getElementById("myDialog");
 
