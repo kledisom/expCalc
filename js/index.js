@@ -12,7 +12,7 @@ document.querySelector('#codigo').addEventListener("blur", () => {
     if (flag === 8) {
         let numeroCod = document.querySelector('#codigo').value;
 
-        const url = "http://localhost:3390";
+        const url = "http://api-expedicao.vercel.app";
         fetch(`${url}/read/rte/${numeroCod}`)
             .then((x) => x.json())
             .then((rte) => {
