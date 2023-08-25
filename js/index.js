@@ -113,7 +113,11 @@ function sendObj(array, status) {
         .then((res) => {
             //alert("salvo");
             showDialog();
-
+            
+            document.getElementById("peso").value = '';
+            document.getElementById("met").value = '';
+            eventPeso.focus();
+            
             setTimeout(() => { closeDialog() }, 3000)
         })
 };
@@ -169,3 +173,45 @@ function showDialog() {
 function closeDialog() {
     dialog.close();
 } 
+
+var autoSaving = localStorage.getItem("autoSaving") || false;
+console.log(autoSaving)
+if (localStorage.getItem("autoSaving") === 'true') {
+    document.getElementById("auto-save").style.backgroundColor = "green";
+} else {
+    document.getElementById("auto-save").style.backgroundColor = "#5555";
+}
+
+function autoSave() {
+    let getState = localStorage.getItem("autoSaving");
+    if (getState) {
+        localStorage.setItem("autoSaving", autoSaving);
+    } else {
+        autoSaving = getState;
+    }
+
+    if (getState === 'false') {
+        localStorage.setItem("autoSaving", true);
+        autoSaving = true;
+        document.getElementById("auto-save").style.backgroundColor = "green";
+    } else {
+        localStorage.setItem("autoSaving", false);
+        autoSaving = false;
+        document.getElementById("auto-save").style.backgroundColor = "#5555";
+    }
+}
+
+const eventPeso = document.getElementById("peso");
+const eventMet = document.getElementById("met");
+
+eventPeso.addEventListener('input', () => {
+    if (eventPeso.value.length === 6) {
+        eventMet.focus();
+    }
+});
+
+eventMet.addEventListener('input', () => {
+    if (eventMet.value.length === 6 && autoSaving == "true") {
+        btnSave.click();
+    }
+});
