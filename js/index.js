@@ -157,7 +157,7 @@ function modelAndlen() {
 //modelAndlen();
 
 function navegar(path) {
-    location.href = `./views/${path}`
+    location.href = `/expCalc/views/${path}`
 }
 
 const dialog = document.getElementById("myDialog");
