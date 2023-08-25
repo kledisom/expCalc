@@ -12,9 +12,9 @@
             <h2>cabecalho 1.0.0</h2>
         </header>
         <nav class="area-btn">
-            <button id="btn-view" class="btn-nav" onclick="navegar1('details.html')">view</button>
-            <button id="btn-rte" class="btn-nav" onclick="navegar1('rte.html')">rte</button>
-            <button id="btn-tar" class="btn-nav" onclick="navegar1('tara.html')">tara</button>
+            <button id="btn-view" class="btn-nav" onclick="navegar('details.html')">view</button>
+            <button id="btn-rte" class="btn-nav" onclick="navegar('rte.html')">rte</button>
+            <button id="btn-tar" class="btn-nav" onclick="navegar('tara.html')">tara</button>
         </nav>
         <form>
             <label for="cliente" class="label-name">Nome do cliente</label>
@@ -23,21 +23,6 @@
             <label for="pedido" class="label-name">Nº de pedido</label>
             <input type="text" name="pedido" id="pedido">
 
-            <div class="model">
-                <label for="model">model</label>
-                <select name="model" id="model">
-                    <option value="model1">model1</option>
-                    <option value="model2">model2</option>
-                    <option value="model3">model3</option>
-                </select>
-
-                <label for="len">len</label>
-                <select name="len" id="len">
-                    <option value="2.00">2.00</option>
-                    <option value="1.50">1.50</option>
-                    <option value="1.00">1.00</option>
-                </select>
-            </div>
             <div class="codigo">
                 <label for="codigo">codigo</label>
                 <input type="text" name="codigo" id="codigo" placeholder="387-0001-33">
@@ -46,6 +31,15 @@
                 <label for="tara">tara</label>
                 <input type="number" name="tara" id="tara" placeholder="500">
             </div>
+
+            <div class="model">
+                <label for="model">model</label>
+                <input type="text" name="model" id="model">
+
+                <label for="len">len</label>
+                <input type="text" name="len" id="len" />
+            </div>
+
             <span id="display"></span>
             <div class="peso_met">
                 <div class="insert">
