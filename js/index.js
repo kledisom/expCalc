@@ -30,7 +30,7 @@ btnSave.addEventListener('click', (e) => {
 
     let numeroCod = document.querySelector('#codigo').value;
 
-    const url = "http://localhost:3390";
+    const url = "http://api-expedicao.vercel.app";
     fetch(`${url}/read/rte/${numeroCod}`)
         .then((x) => x.json())
         .then((rte) => {
@@ -89,7 +89,7 @@ function calculating(rte) {
 };
 
 function sendObj(array, status) {
-    const url = "http://localhost:3390";
+    const url = "http://api-expedicao.vercel.app";
 
     const obj = {
         "nu_pedido": array[0],
@@ -125,7 +125,7 @@ function isNotEmpty(value) {
 function modelAndlen() {
     var numAtualPedido = localStorage.getItem('numeroPedido');
 
-    const url = "http://localhost:3390";
+    const url = "http://api-expedicao.vercel.app";
     fetch(`${url}/read/rte/true`)
         .then((x) => x.json())
         .then((res) => {
