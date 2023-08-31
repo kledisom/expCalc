@@ -204,7 +204,7 @@ function autoSave() {
 const eventPeso = document.getElementById("peso");
 const eventMet = document.getElementById("met");
 
-/* eventPeso.addEventListener('input', () => {
+ eventPeso.addEventListener('input', () => {
     if (eventPeso.value.length === 6) {
         eventMet.focus();
     }
@@ -213,5 +213,5 @@ const eventMet = document.getElementById("met");
 eventMet.addEventListener('input', () => {
     if (eventMet.value.length === 6 && autoSaving == "true") {
         btnSave.click();
-    } */
+    } 
 });
