@@ -1,7 +1,13 @@
 const btnSave = document.querySelector('#btn-save');
 
-document.querySelector('#pedido').value = localStorage.getItem('numeroPedido');
-document.querySelector('#cliente').value = localStorage.getItem('nomeCliente');
+document.querySelectorAll("input").forEach((campo)=>{
+    campo.addEventListener("blur", () => {
+        localStorage.setItem(campo.name, campo.value);
+    });
+});
+
+document.querySelector('#pedido').value = localStorage.getItem('pedido');
+document.querySelector('#cliente').value = localStorage.getItem('cliente');
 document.querySelector('#model').value = localStorage.getItem('model');
 document.querySelector('#len').value = localStorage.getItem('len');
 document.querySelector('#codigo').value = localStorage.getItem('codigo');
@@ -51,8 +57,8 @@ function calculating(rte) {
     const met = document.querySelector('#met').value;
     const display = document.querySelector('#display');
 
-    localStorage.setItem('numeroPedido', numeroPedido);
-    localStorage.setItem('nomeCliente', nomeCliente);
+   /*  localStorage.setItem('numeroPedido', numeroPedido);
+    localStorage.setItem('nomeCliente', nomeCliente); */
     /*     localStorage.setItem('model', model);
         localStorage.setItem('len', len); */
     localStorage.setItem('codigo', codigo);
