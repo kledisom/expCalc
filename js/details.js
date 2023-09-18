@@ -86,6 +86,7 @@ function buscar() {
             .then((x) => x.json())
             .then((res) => {
                 list(res);
+                filtro(res);
             })
     } else {
         document.querySelector("tbody").innerHTML = '';
@@ -94,6 +95,7 @@ function buscar() {
             .then((x) => x.json())
             .then((res) => {
                 list(res);
+                filtro(res);
             })
     }
 
@@ -155,7 +157,7 @@ function filtro(artigo) {
             let selectFiltro = document.querySelector(".filtro");
             const option = document.createElement('option');
             option.value = art;
-            option.innerHTML = art.substr(0, 3);
+            option.innerHTML = art;
 
             selectFiltro.appendChild(option);
         };
