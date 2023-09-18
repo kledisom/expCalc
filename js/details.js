@@ -5,6 +5,7 @@ fetch(`${url}/read/pedido/${numAtualPedido}`)
     .then((x) => x.json())
     .then((res) => {
         list(res);
+        filtro(res);
     })
 
 function list(obj) {
@@ -136,6 +137,61 @@ function novo() {
     localStorage.setItem('tara', '');
 
     navegar();
+};
+
+function filtro(artigo) {
+
+    artigo.forEach(data => {
+        let art = data.codigo;
+        var existing = false;
+
+        document.querySelectorAll("option").forEach((result) => {
+            if (result.value.includes(art)) {
+                existing = true;
+            };
+        });
+
+        if (existing === false) {
+            let selectFiltro = document.querySelector(".filtro");
+            const option = document.createElement('option');
+            option.value = art;
+            option.innerHTML = art.substr(0, 3);
+
+            selectFiltro.appendChild(option);
+        };
+
+
+    });
+
+};
+
+function selectedFiltro(event) {
+    let valorComparador = event.target.value;
+
+    if (valorComparador === "todos") {
+
+        document.querySelector('tbody').innerHTML = "";
+
+        fetch(`${url}/read/pedido/${numAtualPedido}`)
+            .then((x) => x.json())
+            .then((res) => {
+                list(res);
+                filtro(res);
+            });
+    } else {
+        fetch(`${url}/read/pedido/${numAtualPedido}`)
+            .then((x) => x.json())
+            .then((res) => {
+
+                let resultFiltro = res.filter((x) => x.codigo == valorComparador);
+
+                document.querySelector('tbody').innerHTML = "";
+
+                list(resultFiltro);
+
+            });
+    };
+
 };
 
 function navegar() {
