@@ -18,3 +18,7 @@ table {
 .area-btn {
     padding: 10px;
 }
+select {
+    height: 30px;
+    width: 100px;
+}
