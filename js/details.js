@@ -1,4 +1,4 @@
-var numAtualPedido = localStorage.getItem('numeroPedido');
+var numAtualPedido = localStorage.getItem('pedido');
 
 const url = "https://api-expedicao.vercel.app";
 fetch(`${url}/read/pedido/${numAtualPedido}`)
