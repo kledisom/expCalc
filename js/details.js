@@ -129,8 +129,8 @@ function apagar() {
 };
 
 function novo() {
-    localStorage.setItem('numeroPedido', '');
-    localStorage.setItem('nomeCliente', '');
+    localStorage.setItem('pedido', '');
+    localStorage.setItem('cliente', '');
     localStorage.setItem('model', '');
     localStorage.setItem('len', '');
     localStorage.setItem('codigo', '');
