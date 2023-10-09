@@ -28,18 +28,20 @@ function list(obj) {
         var cell9 = row.insertCell();
         var cell10 = row.insertCell();
         var cell11 = row.insertCell();
+        var cell12 = row.insertCell();
 
-        cell1.innerHTML = pedido.id;
-        cell2.innerHTML = pedido.nu_pedido;
-        cell3.innerHTML = pedido.nm_cliente;
-        cell4.innerHTML = pedido.model;
-        cell5.innerHTML = pedido.len;
-        cell6.innerHTML = pedido.codigo;
-        cell7.innerHTML = pedido.tara;
-        cell8.innerHTML = pedido.peso;
-        cell9.innerHTML = pedido.met;
-        cell10.innerHTML = pedido.linear;
-        cell11.innerHTML = pedido.status;
+        cell1.innerHTML = index + 1;
+        cell2.innerHTML = pedido.id;
+        cell3.innerHTML = pedido.nu_pedido;
+        cell4.innerHTML = pedido.nm_cliente;
+        cell5.innerHTML = pedido.model;
+        cell6.innerHTML = pedido.len;
+        cell7.innerHTML = pedido.codigo;
+        cell8.innerHTML = pedido.tara;
+        cell9.innerHTML = pedido.peso;
+        cell10.innerHTML = pedido.met;
+        cell11.innerHTML = pedido.linear;
+        cell12.innerHTML = pedido.status;
 
         tara += parseFloat(pedido.tara);
         peso += parseFloat(pedido.peso);
@@ -59,21 +61,22 @@ function list(obj) {
             var cell8 = rowResult.insertCell();
             var cell9 = rowResult.insertCell();
             var cell10 = rowResult.insertCell();
+            var cell11 = rowResult.insertCell();
 
             cell1.innerHTML = "TOTAL";
             cell2.innerHTML = "";
             cell3.innerHTML = "";
             cell4.innerHTML = "";
-            cell6.innerHTML = "";
             cell5.innerHTML = "";
-            cell7.innerHTML = tara; //tara
-            cell8.innerHTML = peso; //peso
-            cell9.innerHTML = met; //met
-            cell10.innerHTML = ((peso - tara) / met).toFixed(3); //linear
+            cell6.innerHTML = "";
+            cell7.innerHTML = "";
+            cell8.innerHTML = tara; //tara
+            cell9.innerHTML = peso; //peso
+            cell10.innerHTML = met; //met
+            cell11.innerHTML = ((peso - tara) / met).toFixed(3); //linear
         }
 
     });
-
 };
 
 function buscar() {
