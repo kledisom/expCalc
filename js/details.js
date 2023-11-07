@@ -142,6 +142,7 @@ function novo() {
     localStorage.setItem('len', '');
     localStorage.setItem('codigo', '');
     localStorage.setItem('tara', '');
+    localStorage.setItem('bd_expedicao', '');
 
     navegar();
 };
