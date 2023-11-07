@@ -94,6 +94,7 @@ function calculating(rte) {
             "status": (linear >= min && linear <= max) ? "aprovado" : "desaprovado"
         }
 
+        localStorage.setItem('bd_expedicao', '');
         var bd = localStorage.getItem('bd_expedicao');
 
 
