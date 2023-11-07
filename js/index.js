@@ -117,6 +117,10 @@ function calculating(rte) {
             //sendObj(array, "desaprovado");
         }
 
+        document.getElementById("peso").value = '';
+        document.getElementById("met").value = '';
+        eventPeso.focus();
+
     } else {
         alert("Por favor preencha os campos corretamente")
     }
