@@ -31,7 +31,7 @@ function list(obj) {
         var cell12 = row.insertCell();
 
         cell1.innerHTML = index + 1;
-        cell2.innerHTML = pedido.id;
+        cell2.innerHTML = pedido._id;
         cell3.innerHTML = pedido.nu_pedido;
         cell4.innerHTML = pedido.nm_cliente;
         cell5.innerHTML = pedido.model;
