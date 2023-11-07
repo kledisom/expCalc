@@ -78,14 +78,43 @@ function calculating(rte) {
 
         console.log(min, max)
 
+        const obj = {
+            "nu_pedido": array[0],
+            "nm_cliente": array[1],
+            "model": array[2],
+            "len": array[3],
+            "codigo": array[4],
+            "tara": array[5],
+            "peso": array[6],
+            "met": array[7],
+            "linear": array[8],
+            "status": (linear >= min && linear <= max) ? "aprovado" : "desaprovado"
+        }
+
+        var bd = localStorage.getItem('bd_expedicao');
+
+
+        if (bd.length > 0) {
+            var arrModifie = JSON.parse(bd);
+            arrModifie.push(obj);
+
+            localStorage.setItem('bd_expedicao', JSON.stringify(arrModifie));
+        } else {
+
+
+            localStorage.setItem('bd_expedicao', JSON.stringify([obj]));
+        }
+
+
         if (linear >= min && linear <= max) {
             display.classList.add("aproved");
             display.classList.remove("disapproved");
-            sendObj(array, "aprovado");
+            //sendObj(array, "aprovado");
+
         } else {
             display.classList.add("disapproved");
             display.classList.remove("aproved");
-            sendObj(array, "desaprovado");
+            //sendObj(array, "desaprovado");
         }
 
     } else {
@@ -96,6 +125,10 @@ function calculating(rte) {
 
 function sendObj(array, status) {
     const url = "https://api-expedicao.vercel.app";
+
+var bd = localStorage.getItem('bd_expedicao');
+
+    var array = JSON.parse(bd);
 
     const obj = {
         "nu_pedido": array[0],
@@ -110,22 +143,35 @@ function sendObj(array, status) {
         "status": status
     }
 
-    fetch(`${url}/create/pedido`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(obj)
-    })
-        .then((x) => x.json())
-        .then((res) => {
-            //alert("salvo");
-            showDialog();
-            
-            document.getElementById("peso").value = '';
-            document.getElementById("met").value = '';
-            eventPeso.focus();
-            
-            setTimeout(() => { closeDialog() }, 3000)
+    array.forEach((item, i) => {
+
+        fetch(`${url}/create/pedido`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(item)
         })
+            .then((x) => x.json())
+            .then((res) => {
+                //alert("salvo");
+                console.log(res)
+
+
+                document.getElementById("peso").value = '';
+                document.getElementById("met").value = '';
+                eventPeso.focus();
+
+                localStorage.setItem('bd_expedicao', '');
+
+            })
+
+        if (i == array.length - 1) {
+            showDialog();
+
+            setTimeout(() => { closeDialog() }, 3000)
+        }
+
+
+    });
 };
 
 function isNotEmpty(value) {
