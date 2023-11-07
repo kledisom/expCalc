@@ -29,6 +29,7 @@ function list(obj) {
         var cell10 = row.insertCell();
         var cell11 = row.insertCell();
         var cell12 = row.insertCell();
+        var cell13 = row.insertCell();
 
         cell1.innerHTML = index + 1;
         cell2.innerHTML = pedido._id;
@@ -42,6 +43,7 @@ function list(obj) {
         cell10.innerHTML = pedido.met;
         cell11.innerHTML = pedido.linear;
         cell12.innerHTML = pedido.status;
+         cell13.innerHTML = '<button onclick="deletarPorId(event)">apagar</button>';
 
         tara += parseFloat(pedido.tara);
         peso += parseFloat(pedido.peso);
@@ -201,4 +203,50 @@ function selectedFiltro(event) {
 
 function navegar() {
     location.href = "../index.html"
+}
+
+function deletarPorId(event) {
+    let linhas = event.currentTarget.parentNode.parentNode;
+    let nu_item = linhas.querySelectorAll('td')[0].innerText;
+    let idPedido = linhas.querySelectorAll('td')[1].innerText;
+
+    let validation = confirm(`Excluir o item ${nu_item} ?`);
+
+    if (validation) {
+        fetch(`${url}/delete/pedido/${idPedido}`, {
+            method: "DELETE"
+        })
+            .then((x) => x.json())
+            .then((res) => {
+                document.querySelector("tbody").innerHTML = '';
+                fetch(`${url}/read/pedido/${numAtualPedido}`)
+                    .then((x) => x.json())
+                    .then((res) => {
+                        list(res);
+
+                        showDialog();
+                        setTimeout(() => { closeDialog() }, 4000)
+                    })
+
+            })
+    } else {
+        document.querySelector("tbody").innerHTML = '';
+
+        /*  fetch(`${url}/read/pedido/true`)
+             .then((x) => x.json())
+             .then((res) => {
+                 list(res);
+             })*/
+    }
+
+};
+
+const dialog = document.getElementById("myDialog");
+
+function showDialog() {
+    dialog.show();
+}
+
+function closeDialog() {
+    dialog.close();
 }
