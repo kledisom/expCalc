@@ -162,15 +162,13 @@ var bd = localStorage.getItem('bd_expedicao');
 
                 localStorage.setItem('bd_expedicao', '');
 
+              if (i == array.length - 1) {
+                    showDialog();
+                    localStorage.setItem('bd_expedicao', '');
+                    setTimeout(() => { closeDialog() }, 3000)
+                }
+
             })
-
-        if (i == array.length - 1) {
-            showDialog();
-
-            setTimeout(() => { closeDialog() }, 3000)
-        }
-
-
     });
 };
 
