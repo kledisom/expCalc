@@ -12,6 +12,7 @@ document.querySelector('#model').value = localStorage.getItem('model');
 document.querySelector('#len').value = localStorage.getItem('len');
 document.querySelector('#codigo').value = localStorage.getItem('codigo');
 document.querySelector('#tara').value = localStorage.getItem('tara');
+document.querySelector('#defaultLinear').value = localStorage.getItem('linear');
 
 document.querySelector('#codigo').addEventListener("blur", () => {
     let flag = document.querySelector('#codigo').value.length;
@@ -24,8 +25,10 @@ document.querySelector('#codigo').addEventListener("blur", () => {
             .then((rte) => {
                 document.querySelector('#model').value = rte[0].modelo;
                 document.querySelector('#len').value = rte[0].largura;
+                document.querySelector('#defaultLinear').value = rte[0].linear;
                 localStorage.setItem('model', rte[0].modelo);
                 localStorage.setItem('len', rte[0].largura);
+                localStorage.setItem('linear', rte[0].linear);
                 console.log(rte[0].modelo)
             })
     }
