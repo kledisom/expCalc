@@ -92,3 +92,21 @@ footer {
     color: #fff;
     border-color: #000;
 }
+
+.model-padroes {
+    display: flex;
+    /*  border: 1px solid red; */
+    justify-content: center;
+    gap: 10px
+}
+
+#defaultLinear,
+#min-linear,
+#max-linear {
+    text-align: center;
+    height: 20px;
+    width: 100px;
+    background-color: #161616;
+    color: #fff;
+    border-radius: 5px;
+}
