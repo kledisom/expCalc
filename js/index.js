@@ -1,5 +1,19 @@
 const btnSave = document.querySelector('#btn-save');
 
+function calcularParametros() {
+    const defaultLinear = localStorage.getItem('linear');
+
+    if (defaultLinear) {
+        const stringNumber = defaultLinear.replace(',', '.');
+
+        document.querySelector('#min-linear').value = (parseFloat(stringNumber) - 0.015).toFixed(3);
+        document.querySelector('#max-linear').value = (parseFloat(stringNumber) + 0.015).toFixed(3);
+    }
+
+};
+
+calcularParametros();
+
 document.querySelectorAll("input").forEach((campo)=>{
     campo.addEventListener("blur", () => {
         localStorage.setItem(campo.name, campo.value);
@@ -29,6 +43,7 @@ document.querySelector('#codigo').addEventListener("blur", () => {
                 localStorage.setItem('model', rte[0].modelo);
                 localStorage.setItem('len', rte[0].largura);
                 localStorage.setItem('linear', rte[0].linear);
+                calcularParametros();
                 console.log(rte[0].modelo)
             })
     }
